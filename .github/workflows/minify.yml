@@ -13,19 +13,16 @@ jobs:
         uses: xpol/setup-lua@v0.3
       - name: minify
         run: lua .github/minify.lua minify stormui.lua > minified.lua
-      - name: Create branch
-        run: |
-          git checkout --orphan minified
       - name: Set identity
         run: |
           git config user.email "bot@example.com"
           git config user.name "Minification bot"
-      - name: Commit on branch
+      - name: Commit and push
+        if: github.event_name == 'push'
         run: |
           git add minified.lua
           git commit -m "Minified script"
-      - name: Push changes
-        run: git push --force origin minified
+          git push
       - name: Publish Artifact
         uses: actions/upload-artifact@v2
         with:
