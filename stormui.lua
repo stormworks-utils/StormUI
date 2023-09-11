@@ -51,7 +51,11 @@ function StormUI.Create(defaultPageBackground)
                             toggle.active=active
                         end
                     end
-                    toggle.hold_length=toggle.hold_length+1
+                    if inBounds then
+                        toggle.hold_length=toggle.hold_length+1
+                    else
+                        toggle.hold_length=0
+                    end
                 else
                     toggle.hold_length=0
                 end
@@ -85,7 +89,7 @@ function StormUI.Create(defaultPageBackground)
                 y1=push.y
                 y2=push.height+y1
                 inBounds=(cursorx>x1 and cursorx<x2 and cursory>y1 and cursory<y2)
-                if cursor[3] then
+                if cursor[3] and inBounds then
                     push.hold_length=push.hold_length+1
                 else
                     push.hold_length=0
