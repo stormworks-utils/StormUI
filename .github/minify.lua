@@ -1786,7 +1786,9 @@ function AddVariableInfo(ast)
 				-- If there is only one item in the name chain, then the first item
 				-- is a reference to a global variable.
 				var = addGlobalReference(nameChain[1].Source, function(name)
-					nameChain[1].Source = name
+					if nameChain[1].Source ~= 'StormUI' then
+						nameChain[1].Source = name
+					end
 				end)
 			else
 				var = referenceVariable(nameChain[1].Source, function(name)
