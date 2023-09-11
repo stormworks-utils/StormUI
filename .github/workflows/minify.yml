@@ -15,8 +15,7 @@ jobs:
         run: lua .github/minify.lua minify stormui.lua > minified.lua
       - name: Create branch
         run: |
-          git checkout HEAD^
-          git checkout -b minified
+          git checkout --orphan minified
       - name: Commit on branch
         run: |
           git add minified.lua
