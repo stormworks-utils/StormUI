@@ -1,0 +1,30 @@
+name: minify
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: install lua
+        uses: xpol/setup-lua@v1
+      - name: minify
+        run: lua .github/minify.lua stormui.lua > minified.lua
+      - name: Create branch
+        run: |
+          git checkout HEAD^1
+          git checkout -b minified
+      - name: Commit on branch
+        run: |
+          git add minified.lua
+          git commit -m "Minified script"
+      - name: Push changes
+        run: git push --force origin minified
+      - name: Publish Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: minified-script
+          path: minified.lua
