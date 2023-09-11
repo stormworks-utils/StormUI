@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: install lua
-        uses: xpol/setup-lua@v1
+        uses: xpol/setup-lua@v0.3
       - name: minify
         run: lua .github/minify.lua stormui.lua > minified.lua
       - name: Create branch
