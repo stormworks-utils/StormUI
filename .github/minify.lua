@@ -208,7 +208,7 @@ function CreateLuaTokenStream(text)
 			q = q + 1
 		end
 		for _, token in pairs(tokenBuffer) do
-			--print(token.Type.."<"..token.Source..">")
+			print(token.Type.."<"..token.Source..">")
 		end
 		olderr("file<"..line..":"..char..">: "..str)
 	end
@@ -1774,7 +1774,7 @@ function AddVariableInfo(ast)
 		end;
 	}
 	visitor.FunctionStat = {
-		Pre = function(stat) 			
+		Pre = function(stat)
 			-- Function stat adds a new scope containing the function arguments
 			-- as local variables.
 			-- A function stat may also assign to a global variable if it is in
@@ -3212,7 +3212,7 @@ if #args ~= 2 then
 	usageError()
 end
 
-local sourceFile = io.open(args[2], 'r')
+local sourceFile = io.input()
 if not sourceFile then
 	error("Could not open the input file `" .. args[2] .. "`", 0)
 end
