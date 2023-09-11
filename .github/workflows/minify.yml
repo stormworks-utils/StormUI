@@ -20,9 +20,10 @@ jobs:
       - name: Commit and push
         if: github.event_name == 'push'
         run: |
+          git checkout --orphan minified
           git add minified.lua
           git commit -m "Minified script"
-          git push
+          git push origin minified
       - name: Publish Artifact
         uses: actions/upload-artifact@v2
         with:
