@@ -125,6 +125,28 @@ function StormUI.Create(defaultPageBackground)
             end
             page.widgets[id]=textbox
         end
+        function page.addLine(id, x1, y1, x2, y2, color)
+            local line={x1=x1,y1=y1,x2=x2, y2=y2, color=color}
+            function line.proccess(cursor, cticks)
+            end
+            function line.draw()
+                StormUI.utils.setColorToList(line.color)
+                screen.drawLine(line.x1, line.y1, line.x2, line.y2)
+            end
+            page.widgets[id]=line
+        end
+        function page.addRect(id, x, y, width, height, border_color, fill_color)
+            local rect={x=x,y=y, width=width, height=height, border_color=border_color, fill_color=fill_color}
+            function rect.proccess(cursor, cticks)
+            end
+            function rect.draw()
+                StormUI.utils.setColorToList(rect.fill_color)
+                screen.drawRectF(rect.x, rect.y, rect.width, rect.height)
+                StormUI.utils.setColorToList(rect.border_color)
+                screen.drawRect(rect.x, rect.y, rect.width, rect.height)
+            end
+            page.widgets[id]=rect
+        end
         newUI.pages[id]=page
     end
     function newUI.setPage(id)
