@@ -16,6 +16,10 @@ jobs:
       - name: Create branch
         run: |
           git checkout --orphan minified
+      - name: Set identity
+        run: |
+          git config user.email "bot@example.com"
+          git config user.name "Minification bot"
       - name: Commit on branch
         run: |
           git add minified.lua
