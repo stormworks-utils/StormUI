@@ -147,6 +147,38 @@ function StormUI.Create(defaultPageBackground)
             end
             page.widgets[id]=rect
         end
+        function page.addIndicatorRect(id, x, y, width, height, border_color, fill_color_on, fill_color_off)
+            local rectIndic={x=x,y=y, width=width, height=height, border_color=border_color, fill_color_on=fill_color_on, fill_color_off=fill_color_off, active=false}
+            function rectIndic.proccess(cursor, cticks)
+            end
+            function rectIndic.draw()
+                if rectIndic.active then
+                    StormUI.utils.setColorToList(rectIndic.fill_color_on)
+                else
+                    StormUI.utils.setColorToList(rectIndic.fill_color_off)
+                end
+                screen.drawRectF(rectIndic.x, rectIndic.y, rectIndic.width, rectIndic.height)
+                StormUI.utils.setColorToList(rectIndic.border_color)
+                screen.drawRect(rectIndic.x, rectIndic.y, rectIndic.width, rectIndic.height)
+            end
+            page.widgets[id]=rectIndic
+        end
+        function page.addIndicatorCircle(id, x, y, radius, border_color, fill_color_on, fill_color_off)
+            local circIndic={x=x,y=y, radius=radius, border_color=border_color, fill_color_on=fill_color_on, fill_color_off=fill_color_off, active=false}
+            function circIndic.proccess(cursor, cticks)
+            end
+            function circIndic.draw()
+                if circIndic.active then
+                    StormUI.utils.setColorToList(circIndic.fill_color_on)
+                else
+                    StormUI.utils.setColorToList(circIndic.fill_color_off)
+                end
+                screen.drawCircleF(circIndic.x, circIndic.y, circIndic.radius)
+                StormUI.utils.setColorToList(circIndic.border_color)
+                screen.drawCircle(circIndic.x, circIndic.y, circIndic.radius)
+            end
+            page.widgets[id]=circIndic
+        end
         newUI.pages[id]=page
     end
     function newUI.setPage(id)
