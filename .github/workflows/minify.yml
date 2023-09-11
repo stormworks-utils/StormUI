@@ -12,7 +12,7 @@ jobs:
       - name: install lua
         uses: xpol/setup-lua@v0.3
       - name: minify
-        run: lua .github/minify.lua stormui.lua > minified.lua
+        run: lua .github/minify.lua minify stormui.lua > minified.lua
       - name: Create branch
         run: |
           git checkout HEAD^1
