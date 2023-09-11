@@ -208,7 +208,7 @@ function CreateLuaTokenStream(text)
 			q = q + 1
 		end
 		for _, token in pairs(tokenBuffer) do
-			print(token.Type.."<"..token.Source..">")
+			--print(token.Type.."<"..token.Source..">")
 		end
 		olderr("file<"..line..":"..char..">: "..str)
 	end
@@ -3212,7 +3212,7 @@ if #args ~= 2 then
 	usageError()
 end
 
-local sourceFile = io.input()
+local sourceFile = io.open(args[2], 'r')
 if not sourceFile then
 	error("Could not open the input file `" .. args[2] .. "`", 0)
 end
