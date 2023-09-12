@@ -1642,9 +1642,11 @@ function AddVariableInfo(ast)
 			ReferenceLocationList = {};
 		}
 		function var:Rename(newName)
-			self.Name = newName
-			for _, renameFunc in pairs(self.RenameList) do
-				renameFunc(newName)
+			if self.Name ~= "StormUI" then
+				self.Name = newName
+				for _, renameFunc in pairs(self.RenameList) do
+					renameFunc(newName)
+				end
 			end
 		end
 		function var:Reference()
