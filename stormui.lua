@@ -256,14 +256,15 @@ function StormUI.Create(defaultPageBackground)
     newUI.addPage('default', defaultPageBackground or {type="blank"})
     return newUI
 end
-StormUI.utils={}
 
-function StormUI.utils.setColorToList(list)
-    sc.setColor(list[1],list[2],list[3],list[4])
-end
+StormUI.utils={
+    setColorToList=function(list)
+        sc.setColor(list[1],list[2],list[3],list[4])
+    end
+}
 
-StormUI.colors={}
-
-StormUI.colors.Transparent={0,0,0,0}
-StormUI.colors.White={255,255,255,255}
-StormUI.colors.Black={0,0,0,255}
+StormUI.colors={
+    Transparent={0,0,0,0}
+    White={255,255,255,255}
+    Black={0,0,0,255}
+}
