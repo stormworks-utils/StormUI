@@ -264,7 +264,7 @@ StormUI.utils={
 }
 
 StormUI.colors={
-    Transparent={0,0,0,0}
-    White={255,255,255,255}
+    Transparent={0,0,0,0},
+    White={255,255,255,255},
     Black={0,0,0,255}
 }
